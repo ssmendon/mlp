@@ -1,14 +1,7 @@
 from abc import ABC
 from itertools import tee
 
-import numpy as np
-
-# from itertools docs
-def _pairwise(iterable):
-    "s -> (s0,s1), (s1,s2), (s2, s3), ..."
-    a, b = tee(iterable)
-    next(b, None)
-    return zip(a, b)
+import numpy as np  # type: ignore
 
 class Unit(ABC):
 
@@ -16,7 +9,7 @@ class Unit(ABC):
         pass
 
     def __call__(self, x: np.ndarray) -> np.ndarray:
-        self.forward(x)
+        return self.forward(x)
 
 class Network(Unit):
     r'''Represents a 3-layer MLP with configurable layer sizes.'''
@@ -24,9 +17,9 @@ class Network(Unit):
     in_features: int
     out_features: int
     hidden_size: int
-    model: [np.ndarray]
+    model: list
 
-    def __init__(self, in_features: int, out_features: int, hidden_size: int) -> None:
+    def __init__(self, in_features: int, hidden_size: int, out_features: int, weight = dict()) -> None:
         self.in_features = in_features
         self.out_features = out_features
         self.hidden_size = hidden_size
@@ -34,7 +27,12 @@ class Network(Unit):
         self.error = lambda z, t: 1/2 * np.square(np.linalg.norm(z - t))
         self.error_deriv = lambda z, t: -(z - t)
 
-        self.model = []
+        self.model = [
+            Perceptron(in_features, hidden_size),
+            Sigmoid(),
+            Perceptron(hidden_size, out_features),
+            Sigmoid(),
+        ]
 
     def forward(self, x: np.ndarray) -> np.ndarray:
         y = x
@@ -42,27 +40,29 @@ class Network(Unit):
             y = layer(y)
         return y
 
-    def backward_online(self, x: np.ndarray, t: np.ndarray, eta: float) -> np.ndarray:
-        r'''A method for doing online backpropagation.'''
+    def backward_online(self, x: np.ndarray, t: np.ndarray, eta: float) -> None:
+        r'''Peform single-sample backpropagation.'''
 
         # need the inputs and outputs from each layer
-        y = x
-        net = []
-        out = []
+        net_j = self.model[0](x)
+        y = self.model[1](net_j)
+        net_k = self.model[2](y)
+        z = self.model[3](net_k)
 
-        # each layer in this MLP is a linear layer followed by nonlinear activation
-        for linear, nonlinear in self.model:
-            y = linear(y)
-            net.append(y)
 
-            y = nonlinear(y)
-            out.append(y)
+        # use the results to backpropagate
+        sens_k = self.error_deriv(z, t) * self.model[3].derivative(net_k)
+        sens_j = np.matmul(self.model[2].weight, sens_k) * self.model[1].derivative(net_j)
 
-        # compute output layer error
-        delta = -eta * self.error_deriv(out[-1], t) * self.model[-1].derivative(net[-1])
+        # update
+        self.model[2].weight = self.model[2].weight - eta * np.multiply(sens_k, y)
+        self.model[2].bias = self.model[2].bias * sens_k
 
-        print(delta)
-            
+        self.model[0].weight = self.model[0].weight - eta * np.multiply(sens_j, x)
+        self.model[0].bias = self.model[0].bias * sens_j
+
+        print(self.model[0].bias)
+
 
 class Perceptron(Unit):
     r'''A light wrapper around a matrix to represent a perceptron.'''
@@ -84,12 +84,12 @@ class Perceptron(Unit):
 
         if weight and weight.shape == (self.in_features, self.out_features):
             self.weight = weight
-        else:
+        elif weight:
             raise ValueError('Initializing weights failed with invalid shape')
 
         if bias and bias.shape == (self.out_features, 1):
             self.bias = bias
-        else:
+        elif bias:
             raise ValueError('Initializing bias failed with invalid shape')
 
         # random initialization, see 6.8.8 from text
@@ -99,7 +99,7 @@ class Perceptron(Unit):
         self.bias = (b - a) * np.random.random_sample((self.out_features, 1)) + a
 
     def forward(self, x: np.ndarray) -> np.ndarray:
-        return np.matmul(x, self.weight.T) + self.bias
+        return np.matmul(self.weight.T, x) + self.bias
 
 class Sigmoid(Unit):
     r'''A class representing the Sigmoid activation function.'''

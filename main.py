@@ -3,110 +3,56 @@ import numpy as np
 import numpy.matlib
 
 def main():
-    backprop_test()
-    return
-
-    x = np.array([
-        [-1, -1],
-        [-1, 1],
-        [1, -1],
-        [1, 1]
-    ])
-
-    t = np.array([
-        -1, 1, 1, -1
-    ])
-
-    # add bias
-    bias = np.ones(
-        (x.shape[0], 1)
-    )
-
-    x = np.concatenate((bias, x), axis=1)
-    x = x.transpose()
-    print(x)
-
-    weights_j = np.array([
-        [0.5, 1, 1],
-        [-1.5, 1, 1]
-    ])
-
-    weights_k = np.array([
-        [-1, 0.7, -0.4],
-    ])
-
-    weights = np.concatenate((weights_j, weights_k))
-    weights = weights.transpose()
-
-    net_j = np.matmul(weights[:,0:2].T, x)
-    print()
-    print(net_j)
-    print()
-    print(net_j[0,:])
-    print()
-
-    y = np.sign(net_j)
-    y = np.concatenate((bias, y.T), axis=1).T  # reattach bias
-    print('y =\n', y)
-    print()
-
-    net_k = np.matmul(weights[:,2:].T, y)
-    outputs = np.sign(net_k)
-
-    print(outputs)
-    print()
-
-    return
-
-def backprop_test():
     np.random.seed(0)
 
-    x = np.array([
-        [-1, -1],
-        [-1, 1],
-        [1, -1],
+    X = np.array([
+        [0, 0],
+        [1, 0],
+        [0, 1],
         [1, 1]
     ])
+    X = X.transpose()
 
     t = np.array([
-        -1, 1, 1, -1
+        [0],
+        [1],
+        [1],
+        [0]
     ])
 
-    activation = lambda x: 1 / (1 - np.exp(-x))
-    activation_deriv = lambda x: activation(x) * (1 - activation(x))
+    n = Network(2, 2, 1)
+    print(n(X))
 
-    error_func = lambda z, t: np.sum(np.square(t - z), axis=0)/2
-    error_deriv = lambda y, z, t: -np.sum(t - z) * activation_deriv(y)
+    train1(X, t, n, 1, 20)
 
+def train1(X, yhat, n, eta, n_epoch):
+    n_samples = X.shape[-1]
+    n_input = X.shape[0]
+    n_output = 1
     
-    errors = np.ones((1, len(x)))
-    
-    while np.linalg.norm(errors) >= 0.00001:
-        # add bias
-        bias = np.ones(
-            (x.shape[0], 1)
-        )
+    # keep track of performance during training
+    costs = np.zeros(shape=(n_epoch,1))
 
-        x = np.concatenate((bias, x), axis=1)
-        x = x.transpose()
+    print(n(X))
 
-        weights = np.matlib.rand(3, 3)
+    for epoch in range(n_epoch):
+        for i in range(n_samples):
+            x0 = X[:,i]; yh = yhat[i]
+            y = n(x0)  # prediction for one sample
 
-        net_j = np.matmul(weights[:,0:2].T, x)
-
-        y = activation(net_j)
-
-        y = np.concatenate((bias, y.T), axis=1).T  # reattach bias
-
-
-        net_k = np.matmul(weights[:,2:].T, y)
-        outputs = activation(net_k)
-
-        # backprop starts here
-        errors = error_func(outputs, t)
-
-        break
-
+            n.backward_online(x0, yh, eta)  # take step
+        
+        # ### Some niceness to see our progress
+        # Calculate total cost after epoch
+        predictions = n(X)  # predictions for entire set
+        print(predictions)
+        print(yhat)
+        costs[epoch] = np.mean(n.error(predictions, yhat))  # mean cost per sample
+        # report progress
+        if ((epoch % 10) == 0) or (epoch == (n_epoch - 1)):
+            #print(predictions.round())
+            accuracy = np.mean(predictions.round() == yhat)  # current accuracy on entire set
+            print('Training accuracy after epoch {}: {:.4%}'.format(epoch, accuracy))
 
 
 if __name__ == '__main__':
