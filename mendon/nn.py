@@ -89,8 +89,8 @@ class Perceptron(Unit):
             raise ValueError('Initializing bias failed with invalid shape')
 
         # random initialization, see 6.8.8 from text
-        b = 1/np.sqrt(self.out_features)
-        a = -1/np.sqrt(self.out_features)
+        b = 1/np.sqrt(self.in_features)
+        a = -1/np.sqrt(self.in_features)
         self.weight = (b - a) * np.random.random_sample((self.in_features, self.out_features)) + a
         self.bias = (b - a) * np.random.random_sample((self.out_features, 1)) + a
 
