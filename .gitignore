@@ -1,2 +1,8 @@
 .devcontainer/
 __pycache__/
+.mypy_cache/
+.vscode/
+img/
+569-project2.zip
+main2.py
+line plot.jpg
