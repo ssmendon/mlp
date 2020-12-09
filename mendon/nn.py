@@ -24,12 +24,12 @@ class Network(Unit):
         self.out_features = out_features
         self.hidden_size = hidden_size
 
-        self.error = lambda z, t: 1/2 * np.square(np.linalg.norm(z - t))
-        self.error_deriv = lambda z, t: -(z - t)
+        self.error = lambda z, t: 1/2 * np.square(np.linalg.norm(t - z))
+        self.error_deriv = lambda z, t: -(t - z)
 
         self.model = [
             Perceptron(in_features, hidden_size),
-            Sigmoid(),
+            ReLU(),
             Perceptron(hidden_size, out_features),
             Sigmoid(),
         ]
@@ -49,20 +49,16 @@ class Network(Unit):
         net_k = self.model[2](y)
         z = self.model[3](net_k)
 
-
         # use the results to backpropagate
         sens_k = self.error_deriv(z, t) * self.model[3].derivative(net_k)
         sens_j = np.matmul(self.model[2].weight, sens_k) * self.model[1].derivative(net_j)
 
         # update
-        self.model[2].weight = self.model[2].weight - eta * np.multiply(sens_k, y)
-        self.model[2].bias = self.model[2].bias * sens_k
-
-        self.model[0].weight = self.model[0].weight - eta * np.multiply(sens_j, x)
-        self.model[0].bias = self.model[0].bias * sens_j
-
-        print(self.model[0].bias)
-
+        self.model[2].weight = self.model[2].weight - eta * np.matmul(y, sens_k.T)
+        self.model[2].bias = self.model[2].bias - eta * self.model[2].bias * sens_k
+    
+        self.model[0].weight = self.model[0].weight - eta * np.matmul(x, sens_j.T)
+        self.model[0].bias = self.model[0].bias - eta * self.model[0].bias * sens_j
 
 class Perceptron(Unit):
     r'''A light wrapper around a matrix to represent a perceptron.'''
@@ -115,8 +111,8 @@ class ReLU(Unit):
     r'''A class representing the ReLU activation function.'''
 
     def __init__(self) -> None:
-        self.activation = lambda x: max(0, x)
-        self.derivative = lambda x: 1 if x else 0
+        self.activation = lambda x: np.where(x < 0, 0, x)
+        self.derivative = lambda x: np.where(x <= 0, 0, 1)
 
     def forward(self, x: np.ndarray) -> np.ndarray:
         return self.activation(x)
