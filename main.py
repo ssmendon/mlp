@@ -19,6 +19,12 @@ def main():
     test1 = np.loadtxt('./data/Test1.txt')
     test2 = np.loadtxt('./data/Test2.txt')
 
+    # plot the data itself
+    combined_data = np.vstack([class1, test1, class2, test2]).transpose()
+    combined_labels = np.vstack([np.zeros((3000, 1)), np.ones((3000, 1))])
+
+    plot_data('./img/unnormalized-data.jpg', combined_data, combined_labels)
+
     # normalization
     normalized_data = normalize(
         np.vstack([class1[:1500,:], class2[:1500,:]]).transpose(),
@@ -43,8 +49,13 @@ def main():
     ])
     validationY = np.vstack([np.zeros((500,1)), np.ones((500, 1))])
 
+    # plot normalized data
+    normalized_combined = np.hstack([normalized_data, testX])
+    normalized_combined_labels = np.vstack([np.zeros((2000, 1)), np.ones((2000, 1)), np.zeros((1000, 1)), np.ones((1000, 1))])
+    plot_data('./img/normalized-data.jpg', normalized_combined, normalized_combined_labels)
+
     # train
-    eta = 0.1 #eta = 0.002
+    eta = 0.1
     hidden_sizes = [2, 4, 6, 8, 10]
     models = defaultdict(list)
     for size in hidden_sizes:
@@ -108,8 +119,8 @@ def plot_accuracy(file: str, hidden_sizes: list[int], avg_accuracies: list[float
     
     fig, ax = pyplot.subplots()
 
-    ax.plot(hidden_sizes, avg_accuracies, 'r--', label='Average Loss')
-    ax.plot(hidden_sizes, best_accuracies, 'b--', label='Best Loss')
+    ax.plot(hidden_sizes, avg_accuracies, 'ro--', label='Average Loss')
+    ax.plot(hidden_sizes, best_accuracies, 'bo--', label='Best Loss')
 
     ax.set(xlabel='hidden size', ylabel='accuracy (%)',
            title='Accuracy')
@@ -151,6 +162,33 @@ def plot_learning_curves(file: str, losses: dict[str, list[int, ...]]) -> None:
     fig.savefig(file)
     pyplot.close(fig)
     
+def plot_data(file: str, data: np.ndarray, labels: np.ndarray) -> None:
+    r'''Plots the data and colors it according to its class.
+    
+    Args:
+        file: path where the file is saved (directories should already exist)
+        data: a column-vector (feat x samples)
+        labels: a column vector (samples x 1)
+    '''
+
+    fig, ax = pyplot.subplots()
+
+    # draw the points in data colored by their class
+    xy0 = data[:, np.nonzero(labels.flatten() == 0)]
+    xy0.reshape((2, xy0.shape[-1]))
+    xy1 = data[:, np.nonzero(labels.flatten() == 1)]
+    xy1.reshape((2, xy1.shape[-1]))
+    
+    ax.scatter(*xy0, label='0', cmap='Paired')
+    ax.scatter(*xy1, label='1', cmap='Paired')
+
+    ax.set(xlabel='x1', ylabel='x2',
+           title='plot of the data')
+    ax.legend()
+
+    fig.savefig(file)
+    pyplot.close(fig)
+
 
 def plot_decision_boundary(file: str, data: np.ndarray, labels: np.ndarray, n: Network) -> None:
     r'''Plots the decision region given a trained model and labelled data.
