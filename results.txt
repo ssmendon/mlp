@@ -1,0 +1,307 @@
+Training with size 2 on iter 0
+Training set accuracy after 3 epochs:        68.7667%
+Validation set accuracy after 3 epochs:      69.2000%
+Testing set accuracy after 3 epochs:         69.3500%
+
+Training with size 2 on iter 1
+Training set accuracy after 5 epochs:        64.0333%
+Validation set accuracy after 5 epochs:      62.8000%
+Testing set accuracy after 5 epochs:         63.9500%
+
+Training with size 2 on iter 2
+Training set accuracy after 3 epochs:        64.7667%
+Validation set accuracy after 3 epochs:      63.4000%
+Testing set accuracy after 3 epochs:         64.6000%
+
+Training with size 2 on iter 3
+Training set accuracy after 3 epochs:        65.2667%
+Validation set accuracy after 3 epochs:      63.5000%
+Testing set accuracy after 3 epochs:         64.8500%
+
+Training with size 2 on iter 4
+Training set accuracy after 2 epochs:        65.1000%
+Validation set accuracy after 2 epochs:      63.7000%
+Testing set accuracy after 2 epochs:         64.7000%
+
+Training with size 2 on iter 5
+Training set accuracy after 2 epochs:        68.4667%
+Validation set accuracy after 2 epochs:      69.0000%
+Testing set accuracy after 2 epochs:         70.9000%
+
+Training with size 2 on iter 6
+Training set accuracy after 3 epochs:        61.8000%
+Validation set accuracy after 3 epochs:      63.0000%
+Testing set accuracy after 3 epochs:         64.2000%
+
+Training with size 2 on iter 7
+Training set accuracy after 3 epochs:        58.2333%
+Validation set accuracy after 3 epochs:      59.8000%
+Testing set accuracy after 3 epochs:         60.2000%
+
+Training with size 2 on iter 8
+Training set accuracy after 3 epochs:        57.0000%
+Validation set accuracy after 3 epochs:      59.2000%
+Testing set accuracy after 3 epochs:         59.3000%
+
+Training with size 2 on iter 9
+Training set accuracy after 3 epochs:        69.1333%
+Validation set accuracy after 3 epochs:      69.2000%
+Testing set accuracy after 3 epochs:         69.8000%
+
+
+
+Training with size 4 on iter 0
+Training set accuracy after 3 epochs:        71.8000%
+Validation set accuracy after 3 epochs:      70.3000%
+Testing set accuracy after 3 epochs:         71.3000%
+
+Training with size 4 on iter 1
+Training set accuracy after 7 epochs:        74.1667%
+Validation set accuracy after 7 epochs:      74.1000%
+Testing set accuracy after 7 epochs:         75.9000%
+
+Training with size 4 on iter 2
+Training set accuracy after 6 epochs:        75.1333%
+Validation set accuracy after 6 epochs:      73.5000%
+Testing set accuracy after 6 epochs:         75.7000%
+
+Training with size 4 on iter 3
+Training set accuracy after 2 epochs:        66.2000%
+Validation set accuracy after 2 epochs:      65.3000%
+Testing set accuracy after 2 epochs:         65.5500%
+
+Training with size 4 on iter 4
+Training set accuracy after 10 epochs:       74.6333%
+Validation set accuracy after 10 epochs:     73.4000%
+Testing set accuracy after 10 epochs:        75.3000%
+
+Training with size 4 on iter 5
+Training set accuracy after 3 epochs:        72.5000%
+Validation set accuracy after 3 epochs:      72.1000%
+Testing set accuracy after 3 epochs:         73.7000%
+
+Training with size 4 on iter 6
+Training set accuracy after 2 epochs:        69.5333%
+Validation set accuracy after 2 epochs:      68.5000%
+Testing set accuracy after 2 epochs:         70.6000%
+
+Training with size 4 on iter 7
+Training set accuracy after 4 epochs:        72.0667%
+Validation set accuracy after 4 epochs:      71.9000%
+Testing set accuracy after 4 epochs:         73.0500%
+
+Training with size 4 on iter 8
+Training set accuracy after 5 epochs:        70.2667%
+Validation set accuracy after 5 epochs:      69.3000%
+Testing set accuracy after 5 epochs:         70.8000%
+
+Training with size 4 on iter 9
+Training set accuracy after 4 epochs:        73.9333%
+Validation set accuracy after 4 epochs:      72.5000%
+Testing set accuracy after 4 epochs:         74.7000%
+
+
+
+Training with size 6 on iter 0
+Training set accuracy after 6 epochs:        80.0000%
+Validation set accuracy after 6 epochs:      78.0000%
+Testing set accuracy after 6 epochs:         80.1500%
+
+Training with size 6 on iter 1
+Training set accuracy after 2 epochs:        71.1333%
+Validation set accuracy after 2 epochs:      70.6000%
+Testing set accuracy after 2 epochs:         72.2000%
+
+Training with size 6 on iter 2
+Training set accuracy after 7 epochs:        80.0000%
+Validation set accuracy after 7 epochs:      78.8000%
+Testing set accuracy after 7 epochs:         80.7000%
+
+Training with size 6 on iter 3
+Training set accuracy after 3 epochs:        68.3333%
+Validation set accuracy after 3 epochs:      67.7000%
+Testing set accuracy after 3 epochs:         70.4500%
+
+Training with size 6 on iter 4
+Training set accuracy after 3 epochs:        71.8667%
+Validation set accuracy after 3 epochs:      70.8000%
+Testing set accuracy after 3 epochs:         72.0500%
+
+Training with size 6 on iter 5
+Training set accuracy after 10 epochs:       79.9667%
+Validation set accuracy after 10 epochs:     78.5000%
+Testing set accuracy after 10 epochs:        80.8000%
+
+Training with size 6 on iter 6
+Training set accuracy after 10 epochs:       73.1667%
+Validation set accuracy after 10 epochs:     71.2000%
+Testing set accuracy after 10 epochs:        72.9000%
+
+Training set accuracy after 16 epochs:       79.6000%
+Validation set accuracy after 16 epochs:     78.9000%
+Testing set accuracy after 16 epochs:        81.3000%
+
+Training with size 6 on iter 7
+Training set accuracy after 3 epochs:        68.4667%
+Validation set accuracy after 3 epochs:      68.7000%
+Testing set accuracy after 3 epochs:         70.1000%
+
+Training with size 6 on iter 8
+Training set accuracy after 6 epochs:        79.0667%
+Validation set accuracy after 6 epochs:      77.5000%
+Testing set accuracy after 6 epochs:         80.1000%
+
+Training with size 6 on iter 9
+Training set accuracy after 6 epochs:        79.4333%
+Validation set accuracy after 6 epochs:      77.3000%
+Testing set accuracy after 6 epochs:         79.1000%
+
+
+
+Training with size 8 on iter 0
+Training set accuracy after 6 epochs:        80.1333%
+Validation set accuracy after 6 epochs:      79.7000%
+Testing set accuracy after 6 epochs:         81.2500%
+
+Training with size 8 on iter 1
+Training set accuracy after 5 epochs:        80.3000%
+Validation set accuracy after 5 epochs:      79.7000%
+Testing set accuracy after 5 epochs:         81.4000%
+
+Training with size 8 on iter 2
+Training set accuracy after 6 epochs:        80.3000%
+Validation set accuracy after 6 epochs:      78.7000%
+Testing set accuracy after 6 epochs:         79.7500%
+
+Training with size 8 on iter 3
+Training set accuracy after 5 epochs:        72.7667%
+Validation set accuracy after 5 epochs:      72.9000%
+Testing set accuracy after 5 epochs:         74.4500%
+
+Training with size 8 on iter 4
+Training set accuracy after 4 epochs:        80.2667%
+Validation set accuracy after 4 epochs:      78.5000%
+Testing set accuracy after 4 epochs:         80.9500%
+
+Training with size 8 on iter 5
+Training set accuracy after 5 epochs:        80.9667%
+Validation set accuracy after 5 epochs:      79.1000%
+Testing set accuracy after 5 epochs:         80.8500%
+
+Training with size 8 on iter 6
+Training set accuracy after 10 epochs:       73.7333%
+Validation set accuracy after 10 epochs:     71.3000%
+Testing set accuracy after 10 epochs:        74.3500%
+
+Training set accuracy after 12 epochs:       79.9333%
+Validation set accuracy after 12 epochs:     78.7000%
+Testing set accuracy after 12 epochs:        80.4000%
+
+Training with size 8 on iter 7
+Training set accuracy after 2 epochs:        68.1333%
+Validation set accuracy after 2 epochs:      68.3000%
+Testing set accuracy after 2 epochs:         70.0500%
+
+Training with size 8 on iter 8
+Training set accuracy after 10 epochs:       80.9667%
+Validation set accuracy after 10 epochs:     79.6000%
+Testing set accuracy after 10 epochs:        81.9000%
+
+Training set accuracy after 20 epochs:       80.8667%
+Validation set accuracy after 20 epochs:     79.7000%
+Testing set accuracy after 20 epochs:        81.8500%
+
+Training set accuracy after 25 epochs:       80.2333%
+Validation set accuracy after 25 epochs:     79.4000%
+Testing set accuracy after 25 epochs:        80.8000%
+
+Training with size 8 on iter 9
+Training set accuracy after 8 epochs:        78.8000%
+Validation set accuracy after 8 epochs:      77.3000%
+Testing set accuracy after 8 epochs:         80.1500%
+
+
+
+Training with size 10 on iter 0
+Training set accuracy after 10 epochs:       79.8667%
+Validation set accuracy after 10 epochs:     79.1000%
+Testing set accuracy after 10 epochs:        81.9500%
+
+Training set accuracy after 13 epochs:       80.8333%
+Validation set accuracy after 13 epochs:     80.5000%
+Testing set accuracy after 13 epochs:        82.3000%
+
+Training with size 10 on iter 1
+Training set accuracy after 8 epochs:        80.8667%
+Validation set accuracy after 8 epochs:      79.5000%
+Testing set accuracy after 8 epochs:         80.7000%
+
+Training with size 10 on iter 2
+Training set accuracy after 10 epochs:       81.0000%
+Validation set accuracy after 10 epochs:     78.1000%
+Testing set accuracy after 10 epochs:        80.8500%
+
+Training set accuracy after 13 epochs:       80.9000%
+Validation set accuracy after 13 epochs:     80.1000%
+Testing set accuracy after 13 epochs:        81.6500%
+
+Training with size 10 on iter 3
+Training set accuracy after 8 epochs:        80.8667%
+Validation set accuracy after 8 epochs:      79.4000%
+Testing set accuracy after 8 epochs:         82.3500%
+
+Training with size 10 on iter 4
+Training set accuracy after 5 epochs:        79.1667%
+Validation set accuracy after 5 epochs:      78.1000%
+Testing set accuracy after 5 epochs:         79.1500%
+
+Training with size 10 on iter 5
+Training set accuracy after 6 epochs:        81.1000%
+Validation set accuracy after 6 epochs:      79.7000%
+Testing set accuracy after 6 epochs:         81.8000%
+
+Training with size 10 on iter 6
+Training set accuracy after 10 epochs:       69.1333%
+Validation set accuracy after 10 epochs:     71.5000%
+Testing set accuracy after 10 epochs:        73.1000%
+
+Training set accuracy after 20 epochs:       77.8333%
+Validation set accuracy after 20 epochs:     76.8000%
+Testing set accuracy after 20 epochs:        79.5500%
+
+Training set accuracy after 25 epochs:       80.8333%
+Validation set accuracy after 25 epochs:     79.3000%
+Testing set accuracy after 25 epochs:        81.2500%
+
+Training with size 10 on iter 7
+Training set accuracy after 10 epochs:       79.9333%
+Validation set accuracy after 10 epochs:     78.5000%
+Testing set accuracy after 10 epochs:        81.2000%
+
+Training set accuracy after 20 epochs:       81.1333%
+Validation set accuracy after 20 epochs:     79.6000%
+Testing set accuracy after 20 epochs:        81.3000%
+
+Training with size 10 on iter 8
+Training set accuracy after 5 epochs:        80.3667%
+Validation set accuracy after 5 epochs:      79.6000%
+Testing set accuracy after 5 epochs:         81.4000%
+
+Training with size 10 on iter 9
+Training set accuracy after 10 epochs:       78.3000%
+Validation set accuracy after 10 epochs:     76.7000%
+Testing set accuracy after 10 epochs:        79.3000%
+
+Training set accuracy after 16 epochs:       80.6667%
+Validation set accuracy after 16 epochs:     78.5000%
+Testing set accuracy after 16 epochs:        81.0500%
+
+
+
+Evaluating model performance...
+                     Size             Average                Best
+                        2            65.1850%            70.9000%
+                        4            72.6600%            75.9000%
+                        6            76.6950%            81.3000%
+                        8            79.0050%            81.4000%
+                       10            81.2950%            82.3500%
